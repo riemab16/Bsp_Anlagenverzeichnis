@@ -1,8 +1,6 @@
 
 public class Eintrag {
 
-   
-    
     private String bezeichnung;
     private int ankauf;
     private double inbDatum;
@@ -13,22 +11,22 @@ public class Eintrag {
     private double afaDJ;
     private double WB;
     private int year;
-    
-     public Eintrag(String bezeichnung, int ankauf,int year, double inbDatum, double nutzungsdauer) {
+
+    public Eintrag(String bezeichnung, int ankauf, int year, double inbDatum, double nutzungsdauer) {
         this.bezeichnung = bezeichnung;
         this.ankauf = ankauf;
         this.inbDatum = inbDatum;
         this.nutzungsdauer = nutzungsdauer;
         this.year = year;
     }
-     
-    public void berechne(){
+
+    public void berechne() {
         afaDJ = ankauf / nutzungsdauer;
         bisherND = year - inbDatum;
-        
+
     }
-    
-     public String getBezeichnung() {
+
+    public String getBezeichnung() {
         return bezeichnung;
     }
 
