@@ -19,16 +19,15 @@ public class Eintrag  {
     public Eintrag(String line) {
         String[] sArray = line.split(";");
         bezeichnung = sArray[0];
-        ankauf = Integer.parseInt(sArray[1]);
-        nutzungsdauer = Double.parseDouble(sArray[2]);
-        bisherND = Double.parseDouble(sArray[3]);
+        ankauf = Integer.parseInt(sArray[1].replace(".", ""));
+        inbDatum = Double.parseDouble(sArray[2].replace(",", "."));
+        nutzungsdauer = Double.parseDouble(sArray[3].replace(",", "."));
+        
   
     }
 
     public void berechne() {
         afaDJ = ankauf / nutzungsdauer;
-       
-
     }
 
     public String getBezeichnung() {
