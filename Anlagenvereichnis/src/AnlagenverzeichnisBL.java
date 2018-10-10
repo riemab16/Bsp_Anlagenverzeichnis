@@ -28,7 +28,7 @@ public class AnlagenverzeichnisBL extends AbstractTableModel {
       Eintrag a = einträge.get(rowindex);
       switch(columnindex){
           case 0: return a.getBezeichnung();
-          case 1: return a.getAnkauf();
+          case 1: return (double) a.getAnkauf();
           case 2: return a.getInbDatum();
           case 3: return a.getNutzungsdauer();
           case 4: return a.getBisherND();

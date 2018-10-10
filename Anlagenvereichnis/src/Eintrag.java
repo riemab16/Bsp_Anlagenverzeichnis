@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class Eintrag  {
 
     private String bezeichnung;
-    private int ankauf;
+    private double ankauf;
     private double inbDatum;
     private double nutzungsdauer;
     private double bisherND;
@@ -19,7 +19,7 @@ public class Eintrag  {
     public Eintrag(String line) {
         String[] sArray = line.split(";");
         bezeichnung = sArray[0];
-        ankauf = Integer.parseInt(sArray[1]);
+        ankauf = Double.parseDouble(sArray[1]);
         nutzungsdauer = Double.parseDouble(sArray[2]);
         bisherND = Double.parseDouble(sArray[3]);
   
@@ -35,7 +35,7 @@ public class Eintrag  {
         return bezeichnung;
     }
 
-    public int getAnkauf() {
+    public double getAnkauf() {
         return ankauf;
     }
 
