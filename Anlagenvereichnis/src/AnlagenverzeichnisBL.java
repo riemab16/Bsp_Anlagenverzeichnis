@@ -1,4 +1,7 @@
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,6 +17,10 @@ public class AnlagenverzeichnisBL extends AbstractTableModel {
     @Override
     public int getColumnCount() {
        return COLNAMES.length;
+    }
+    @Override
+    public String getColumnName(int column){
+       return COLNAMES[column];
     }
 
     @Override
@@ -32,5 +39,23 @@ public class AnlagenverzeichnisBL extends AbstractTableModel {
           default : return "???";
       }
     }
+    public void load(File f){
+        try(BufferedReader br = new BufferedReader(new FileReader(f))){
+            String line;
+                while((line = br.readLine()) != null){
+                    try{
+                        Eintrag e = new Eintrag(line);
+                        einträge.add(e);
+                    }
+                    catch(Exception ex){
+                        
+                    }
+                }
+        }catch(Exception ex){
+            
+        }
+            fireTableRowsInserted(einträge.size()-1, einträge.size()-1);
+    }
+  
     
 }

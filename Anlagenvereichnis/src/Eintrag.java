@@ -1,5 +1,9 @@
 
-public class Eintrag {
+import com.sun.java.accessibility.util.GUIInitializedListener;
+import java.io.Serializable;
+
+
+public class Eintrag  {
 
     private String bezeichnung;
     private int ankauf;
@@ -9,20 +13,21 @@ public class Eintrag {
     private double afaBisher;
     private double wertVor;
     private double afaDJ;
-    private double WB;
-    private int year;
+    private double BW;
+   
 
-    public Eintrag(String bezeichnung, int ankauf, int year, double inbDatum, double nutzungsdauer) {
-        this.bezeichnung = bezeichnung;
-        this.ankauf = ankauf;
-        this.inbDatum = inbDatum;
-        this.nutzungsdauer = nutzungsdauer;
-        this.year = year;
+    public Eintrag(String line) {
+        String[] sArray = line.split(";");
+        bezeichnung = sArray[0];
+        ankauf = Integer.parseInt(sArray[1]);
+        nutzungsdauer = Double.parseDouble(sArray[2]);
+        bisherND = Double.parseDouble(sArray[3]);
+  
     }
 
     public void berechne() {
         afaDJ = ankauf / nutzungsdauer;
-        bisherND = year - inbDatum;
+       
 
     }
 
@@ -58,11 +63,9 @@ public class Eintrag {
         return afaDJ;
     }
 
-    public double getWB() {
-        return WB;
+    public double getBW() {
+        return BW;
     }
 
-    public int getYear() {
-        return year;
-    }
+   
 }
