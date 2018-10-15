@@ -14,21 +14,38 @@ public class Eintrag  {
     private double wertVor;
     private double afaDJ;
     private double BW;
+    private int year;
    
 
-    public Eintrag(String line) {
+    public Eintrag(String line, int year) {
         String[] sArray = line.split(";");
         bezeichnung = sArray[0];
         ankauf = Integer.parseInt(sArray[1].replace(".", ""));
         inbDatum = Double.parseDouble(sArray[2].replace(",", "."));
         nutzungsdauer = Double.parseDouble(sArray[3].replace(",", "."));
-        
-
-  
+        this.year = year;
+        berechne();
     }
 
     public void berechne() {
         afaDJ = ankauf / nutzungsdauer;
+        bisherND = year - inbDatum;
+        if(inbDatum % (int) inbDatum != 1){
+            afaBisher = (ankauf / nutzungsdauer) * (bisherND - 1)
+                    + (ankauf / nutzungsdauer);
+        }
+        else {
+            afaBisher = (ankauf / nutzungsdauer) * bisherND;
+        }
+        if(year == (int) (inbDatum + nutzungsdauer) 
+                && inbDatum % (int) inbDatum != 1){
+            afaDJ = ankauf / nutzungsdauer / 2;
+        }
+        else{
+            afaDJ = ankauf / nutzungsdauer;
+        }
+        wertVor = ankauf - afaBisher;
+        BW = wertVor - afaDJ;
     }
 
     public String getBezeichnung() {

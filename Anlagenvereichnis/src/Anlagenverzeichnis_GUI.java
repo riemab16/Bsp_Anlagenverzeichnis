@@ -26,14 +26,13 @@ public class Anlagenverzeichnis_GUI extends javax.swing.JFrame {
             if(res == JFileChooser.APPROVE_OPTION){
                 File f = chooser.getSelectedFile();
                 try{
-                    model.load(f);
+                    model.load(f, Integer.parseInt(this
+                            .cbYear.getItemAt(cbYear.getSelectedIndex())));
                 }
                 catch(Exception ex){
                     
                 }
             }
-            
-        
     }
 
     /**

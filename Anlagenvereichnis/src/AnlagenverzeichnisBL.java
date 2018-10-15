@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 
 
 public class AnlagenverzeichnisBL extends AbstractTableModel {
-    private final String[] COLNAMES = {"Beteichnung","AK","Inbetr.nahme Datum","ND","bish. ND","Afa bisher","Wert vor Afa","Afa d. J.","BW 31.12"};
+    private final String[] COLNAMES = {"Beteichnung","AK","Inbetriebnahme","ND","bish. ND","Afa bisher","Wert vor Afa","Afa d. J.","BW 31.12"};
     private ArrayList<Eintrag> einträge = new ArrayList<>();
     @Override
     public int getRowCount() {
@@ -39,12 +39,12 @@ public class AnlagenverzeichnisBL extends AbstractTableModel {
           default : return "???";
       }
     }
-    public void load(File f){
+    public void load(File f, int year){
         try(BufferedReader br = new BufferedReader(new FileReader(f))){
             String line;
                 while((line = br.readLine()) != null){
                     try{
-                        Eintrag e = new Eintrag(line);
+                        Eintrag e = new Eintrag(line, year);
                         einträge.add(e);
                     }
                     catch(Exception ex){
