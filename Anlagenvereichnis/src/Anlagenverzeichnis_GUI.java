@@ -7,32 +7,31 @@ import javax.swing.JFileChooser;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ASUS
  */
 public class Anlagenverzeichnis_GUI extends javax.swing.JFrame {
+
     AnlagenverzeichnisBL model = new AnlagenverzeichnisBL();
+
     /**
      * Creates new form Anlagenverzeichnis_GUI
      */
     public Anlagenverzeichnis_GUI() {
         initComponents();
         tbAusgabe.setModel(model);
-        
+        tbAusgabe.setDefaultRenderer(Object.class, new AnlagenTableCellRenderer());
         JFileChooser chooser = new JFileChooser();
-            int res = chooser.showOpenDialog(null);
-            if(res == JFileChooser.APPROVE_OPTION){
-                File f = chooser.getSelectedFile();
-                try{
-                    model.load(f, Integer.parseInt(this
-                            .cbYear.getItemAt(cbYear.getSelectedIndex())));
-                }
-                catch(Exception ex){
-                    
-                }
+        int res = chooser.showOpenDialog(null);
+        if (res == JFileChooser.APPROVE_OPTION) {
+            File f = chooser.getSelectedFile();
+            try {
+                model.load(f, Integer.parseInt(this.cbYear.getItemAt(cbYear.getSelectedIndex())));
+            } catch (Exception ex) {
+
             }
+        }
     }
 
     /**

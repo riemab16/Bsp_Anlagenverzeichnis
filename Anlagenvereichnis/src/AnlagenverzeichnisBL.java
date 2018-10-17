@@ -7,8 +7,10 @@ import javax.swing.table.AbstractTableModel;
 
 
 public class AnlagenverzeichnisBL extends AbstractTableModel {
+    
     private final String[] COLNAMES = {"Beteichnung","AK","Inbetriebnahme","ND","bish. ND","Afa bisher","Wert vor Afa","Afa d. J.","BW 31.12"};
     private ArrayList<Eintrag> einträge = new ArrayList<>();
+    
     @Override
     public int getRowCount() {
        return einträge.size();
@@ -33,18 +35,7 @@ public class AnlagenverzeichnisBL extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowindex, int columnindex) {
       Eintrag a = einträge.get(rowindex);
-      switch(columnindex){
-          case 0: return a.getBezeichnung();
-          case 1: return a.getAnkauf();
-          case 2: return a.getInbDatum();
-          case 3: return String.format("%.2f", a.getNutzungsdauer());
-          case 4: return String.format("%.2f", a.getBisherND());
-          case 5: return String.format("%.2f", a.getAfaBisher());
-          case 6: return String.format("%.2f", a.getWertVor());
-          case 7: return String.format("%.2f", a.getAfaDJ());
-          case 8: return String.format("%.2f", a.getBW());
-          default : return "???";
-      }
+      return a;
     }
     public void load(File f, int year){
         try(BufferedReader br = new BufferedReader(new FileReader(f))){
