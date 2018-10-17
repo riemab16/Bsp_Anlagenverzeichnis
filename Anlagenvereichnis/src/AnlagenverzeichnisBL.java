@@ -22,6 +22,13 @@ public class AnlagenverzeichnisBL extends AbstractTableModel {
     public String getColumnName(int column){
        return COLNAMES[column];
     }
+        
+    public void updateYear(int year){
+        for (Eintrag e : einträge) {
+            e.setYear(year);
+        }
+        fireTableDataChanged();
+    }
 
     @Override
     public Object getValueAt(int rowindex, int columnindex) {
@@ -30,12 +37,12 @@ public class AnlagenverzeichnisBL extends AbstractTableModel {
           case 0: return a.getBezeichnung();
           case 1: return a.getAnkauf();
           case 2: return a.getInbDatum();
-          case 3: return a.getNutzungsdauer();
-          case 4: return a.getBisherND();
-          case 5: return a.getAfaBisher();
-          case 6: return a.getWertVor();
-          case 7: return a.getAfaDJ();
-          case 8: return a.getBW();
+          case 3: return String.format("%.2f", a.getNutzungsdauer());
+          case 4: return String.format("%.2f", a.getBisherND());
+          case 5: return String.format("%.2f", a.getAfaBisher());
+          case 6: return String.format("%.2f", a.getWertVor());
+          case 7: return String.format("%.2f", a.getAfaDJ());
+          case 8: return String.format("%.2f", a.getBW());
           default : return "???";
       }
     }

@@ -70,6 +70,11 @@ public class Anlagenverzeichnis_GUI extends javax.swing.JFrame {
         cbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2010", "2011", "2012", "2013", "2014", "2015", "2016" }));
 
         btUpdate.setText("Update Table");
+        btUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +103,10 @@ public class Anlagenverzeichnis_GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
+        model.updateYear(Integer.parseInt(cbYear.getItemAt(cbYear.getSelectedIndex())));
+    }//GEN-LAST:event_btUpdateActionPerformed
 
     /**
      * @param args the command line arguments

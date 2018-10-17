@@ -26,6 +26,11 @@ public class Eintrag  {
         this.year = year;
         berechne();
     }
+    
+    public void setYear(int year){
+        this.year = year;
+        berechne();
+    }
 
     public void berechne() {
         afaDJ = ankauf / nutzungsdauer;
